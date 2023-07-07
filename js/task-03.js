@@ -24,5 +24,3 @@ const markup = images
   )
   .join("");
 galleryRef.insertAdjacentHTML("beforeend", markup);
-
-console.dir(markup);

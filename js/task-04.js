@@ -3,7 +3,7 @@ const span = document.querySelector("#value");
 const decrementBtn = document.querySelector('button[data-action="decrement"]');
 const incrementBtn = document.querySelector('button[data-action="increment"]');
 
-function onDecrementBtnClick(event) {
+function onDecrementBtnClick() {
   counterValue -= 1;
   span.textContent = counterValue;
 }

@@ -14,20 +14,15 @@
 // Создай функцию destroyBoxes(), которая очищает содержимое div#boxes,
 //тем самым удаляя все созданные элементы.
 
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
 const refs = {
   inputAmmount: document.querySelector("input"),
   createElement: document.querySelector("button[data-create]"),
   destroyElement: document.querySelector("button[data-destroy]"),
   boxes: document.getElementById("boxes"),
 };
+refs.createElement.addEventListener("click", addElement);
+refs.destroyElement.addEventListener("click", destroyBoxes);
 
-//console.log(refs.inputAmmount, refs.createElement, refs.destroyElement);
 function createBoxes(amount) {
   for (let i = 0; i < amount; i += 1) {
     const boxEl = document.createElement("div");
@@ -35,12 +30,13 @@ function createBoxes(amount) {
     boxEl.style.width = 30 + 10 * i + "px";
     boxEl.style.height = 30 + 10 * i + "px";
     boxEl.style.backgroundColor = getRandomHexColor();
+    
     refs.boxes.append(boxEl);
   }
 }
-refs.createElement.addEventListener("click", addElement);
 
 function addElement() {
+  destroyBoxes();
   let amount = refs.inputAmmount.value;
 
   if (amount > 0) {
@@ -48,10 +44,12 @@ function addElement() {
   }
 }
 
-refs.destroyElement.addEventListener("click", destroyBoxes);
-
 function destroyBoxes() {
   refs.boxes.innerHTML = "";
 }
 
-//console.log(createBoxes());
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}

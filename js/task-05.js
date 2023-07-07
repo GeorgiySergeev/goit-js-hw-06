@@ -1,17 +1,11 @@
-const inpurRef = document.querySelector("#name-input");
-console.log(inpurRef);
+const inputRef = document.querySelector("#name-input");
 const spanRef = document.querySelector("#name-output");
-console.log(spanRef.textContent);
+
+inputRef.addEventListener("input", callback);
 
 function callback(event) {
-  let textContainer = "";
-  if (event.currentTarget.value === "") {
+  spanRef.textContent = event.currentTarget.value;
+  if (event.currentTarget.value.trim() === "") {
     spanRef.textContent = "Anonymous";
-  } else {
-    textContainer = event.currentTarget.value;
-
-    spanRef.textContent = textContainer;
   }
 }
-
-inpurRef.addEventListener("input", callback);
